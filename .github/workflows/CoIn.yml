@@ -23,10 +23,7 @@ jobs:
         run: docker-compose up -d
 
       - name: Composer install [manual]
-        run: docker-compose exec -T x-web composer install
+        run: docker-compose exec -T chirhi composer install
 
-      - name: Setup dev environment
-        run: docker-compose exec -T x-web composer run dev
-
-      - name: Run test cases
-        run: docker-compose exec -T x-web composer run pester
+      - name: CI
+        run: docker-compose exec -T chirhi composer run ci

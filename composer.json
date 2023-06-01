@@ -88,6 +88,12 @@
             "@php artisan migrate",
             "composer install",
             "echo \"\nSeed, if in need: \\e[32mphp artisan db:seed\\e[0m\"\n"
+        ],
+        "ci": [
+            "composer install",
+            "npm install",
+            "@dev",
+            "@pester"
         ]
     },
     "extra": {
@@ -102,13 +108,13 @@
                 ]
             },
             "pre-commit": [
-                "docker-compose exec -T x-web composer run pre-commit"
+                "docker-compose exec -T chirhi composer run pre-commit"
             ],
             "pre-push": [
-                "docker-compose exec -T x-web composer run pre-push"
+                "docker-compose exec -T chirhi composer run pre-push"
             ],
             "post-merge": [
-                "docker-compose exec -T x-web composer run post-merge"
+                "docker-compose exec -T chirhi composer run post-merge"
             ]
         }
 
