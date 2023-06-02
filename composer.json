@@ -75,7 +75,7 @@
         "security-checker": "vendor/bin/security-checker security:check",
         "pint": "vendor/bin/pint app tests",
         "pest": "vendor/bin/pest --stop-on-error --stop-on-failure --parallel --compact",
-        "pester": "vendor/bin/pest --stop-on-error --stop-on-failure --parallel --compact --coverage --min=80",
+        "pester": "vendor/bin/pest --stop-on-error --stop-on-failure --parallel --compact --coverage --min=85",
         "pre-commit": [
             "@pint",
             "@phpmd",
