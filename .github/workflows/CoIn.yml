@@ -23,4 +23,4 @@ jobs:
         run: docker-compose up -d
 
       - name: CI
-        run: docker-compose exec -T chirhi composer run ci
+        run: docker-compose exec -T chirpi composer run ci

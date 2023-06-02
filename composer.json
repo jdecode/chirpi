@@ -108,13 +108,13 @@
                 ]
             },
             "pre-commit": [
-                "docker-compose exec -T chirhi composer run pre-commit"
+                "docker-compose exec -T chirpi composer run pre-commit"
             ],
             "pre-push": [
-                "docker-compose exec -T chirhi composer run pre-push"
+                "docker-compose exec -T chirpi composer run pre-push"
             ],
             "post-merge": [
-                "docker-compose exec -T chirhi composer run post-merge"
+                "docker-compose exec -T chirpi composer run post-merge"
             ]
         }
 

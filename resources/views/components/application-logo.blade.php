@@ -1,1 +1,1 @@
-<img src="{{ url('chirhi.png') }}" alt="Chirhi" class="h-20 w-auto" />
+<img src="{{ url('chirpi.png') }}" alt="Chirpi" class="h-20 w-auto" />
