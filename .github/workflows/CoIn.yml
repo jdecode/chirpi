@@ -22,8 +22,5 @@ jobs:
       - name: Docker Compose
         run: docker-compose up -d
 
-      - name: Composer install [manual]
-        run: docker-compose exec -T chirhi composer install
-
       - name: CI
         run: docker-compose exec -T chirhi composer run ci
