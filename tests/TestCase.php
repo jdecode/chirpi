@@ -8,9 +8,7 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    /**
-     * @var string[]
-     */
     public array $admin;
+    public array $client;
     public array $web_user;
 }

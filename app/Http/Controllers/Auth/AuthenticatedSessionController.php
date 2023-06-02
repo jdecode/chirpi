@@ -39,7 +39,7 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
-        if (Auth::guard('admin')->check()) {
+        if (Auth::guard('admin')->check() || Auth::guard('client')->check()) {
             $request->session()->regenerate();
             return redirect(route('home'));
         }

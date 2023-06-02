@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
@@ -8,27 +8,27 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminAuthController extends Controller
+class ClientAuthController extends Controller
 {
     public function loginForm(): View|RedirectResponse
     {
-        return view('admin.loginForm');
+        return view('client.loginForm');
     }
 
     public function login(Request $request): RedirectResponse
     {
         $request->validate(
             [
-                'email' => ['required', 'email', 'exists:admins,email'],
+                'email' => ['required', 'email', 'exists:clients,email'],
                 'password' => ['required'],
             ]
         );
         $credentials = $request->only('email', 'password');
-        if (Auth::guard('admin')->attempt($credentials)) {
+        if (Auth::guard('client')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('admin.dashboard'));
+            return redirect()->intended(route('client.dashboard'));
         }
-        return redirect()->route('admin.loginForm')->withErrors(
+        return redirect()->route('client.loginForm')->withErrors(
             [
                 'email' => 'The provided credentials do not match our records.',
             ]
@@ -37,22 +37,22 @@ class AdminAuthController extends Controller
 
     public function dashboard(): View
     {
-        return view('admin.dashboard');
+        return view('client.dashboard');
     }
 
     public function logout(Request $request): RedirectResponse
     {
-        Auth::guard('admin')->logout();
+        Auth::guard('client')->logout();
 
-        if (Auth::guard('web')->check() || Auth::guard('client')->check()) {
+        if (Auth::guard('web')->check() || Auth::guard('admin')->check()) {
             $request->session()->regenerate();
-            return redirect(route('admin.loginForm'));
+            return redirect(route('client.loginForm'));
         }
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect(route('admin.loginForm'));
+        return redirect(route('client.loginForm'));
     }
 }
