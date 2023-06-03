@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminClientController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
@@ -14,10 +15,16 @@ Route::prefix('admin')->group(function () {
 
     Route::name('admin.')->group(function () {
         Route::middleware(['auth:admin'])->group(function () {
+
             Route::controller(AdminAuthController::class)->group(function () {
                 Route::get('dashboard', 'dashboard')->name('dashboard');
                 Route::post('logout', 'logout')->name('logout');
             });
+
+
+            Route::post('clients', [AdminClientController::class, 'store'])->name('clients.store');
+            Route::get('clients', [AdminClientController::class, 'index'])->name('clients.index');
+
         });
 
         Route::middleware(['guest:admin'])->group(function () {
