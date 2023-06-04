@@ -22,4 +22,9 @@ class AdminClientController extends Controller
     {
         return view('admin.clients.index', ['clients' => Client::all()]);
     }
+
+    public function create(): View
+    {
+        return view('admin.clients.create');
+    }
 }

@@ -24,6 +24,7 @@ Route::prefix('admin')->group(function () {
 
             Route::post('clients', [AdminClientController::class, 'store'])->name('clients.store');
             Route::get('clients', [AdminClientController::class, 'index'])->name('clients.index');
+            Route::get('clients/create', [AdminClientController::class, 'create'])->name('clients.create');
 
         });
 

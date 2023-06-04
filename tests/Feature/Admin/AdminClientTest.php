@@ -49,3 +49,12 @@ test('Admin can see clients', function () {
         );
     $this->assertDatabaseHas('clients', ['email' => $clients->random()->getAttribute('email')]);
 })->group('auth', 'adminClient');
+
+test('Admin can see create client form', function () {
+    $admin = Admin::factory()->create();
+    $this->actingAs($admin, 'admin')
+        ->get(route('admin.clients.create'))
+        ->assertOk()
+        ->assertViewIs('admin.clients.create')
+    ;
+})->group('auth', 'adminClient', 'addClient');
