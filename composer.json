@@ -14,7 +14,8 @@
         "laravel/socialite": "^5.6",
         "laravel/telescope": "*",
         "laravel/tinker": "^2.8.1",
-        "livewire/livewire": "^2.12"
+        "livewire/livewire": "^2.12",
+        "spatie/laravel-ray": "^1.32"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",
