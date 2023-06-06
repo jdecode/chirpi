@@ -22,7 +22,7 @@
                                     <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">URL</th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Email</th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Created</th>
-                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0 hidden">
                                         <span class="sr-only">Edit</span>
                                     </th>
                                 </tr>
@@ -34,7 +34,7 @@
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{ $client->url }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{ $client->email }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{ Carbon\Carbon::parse($client->created_at)->format('F j, Y') }}</td>
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0 hidden">
                                         <a href="#" class="text-indigo-400 hover:text-indigo-300">Edit<span class="sr-only">{{ $client->name }}</span></a>
                                     </td>
                                 </tr>
