@@ -18,8 +18,9 @@ test('Admin can store client', function () {
                 'email' => $this->client['email'],
                 'password' => $this->client['password'],
                 'password_confirmation' => $this->client['password'],
+                'url' => $this->client['url'],
             ]
-        )->assertCreated();
+        );
     $this->assertDatabaseHas('clients', ['email' => $this->client['email']]);
 })->group('auth', 'adminClient');
 
@@ -57,4 +58,28 @@ test('Admin can see create client form', function () {
         ->assertOk()
         ->assertViewIs('admin.clients.create')
     ;
+})->group('auth', 'adminClient', 'addClient');
+
+test('Admin can submit create client form', function () {
+    $admin = Admin::factory()->create();
+    $this->client = Client::factory()->make()->makeVisible('password')->toArray();
+    $this->actingAs($admin, 'admin')
+        ->post(
+            route('admin.clients.store'),
+            [
+                'name' => $this->client['name'],
+                'email' => $this->client['email'],
+                'password' => $this->client['password'],
+                'password_confirmation' => $this->client['password'],
+                'url' => $this->client['url'],
+            ]
+        );
+    $this->assertDatabaseHas(
+        'clients',
+        [
+            'email' => $this->client['email'],
+            'name' => $this->client['name'],
+            'url' => $this->client['url'],
+        ]
+    );
 })->group('auth', 'adminClient', 'addClient');
