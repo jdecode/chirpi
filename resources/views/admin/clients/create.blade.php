@@ -14,7 +14,7 @@
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="mt-1 flow-root">
                 <div class="overflow-x-auto">
-                    <form method="POST" action="{{ route('admin.clients.store') }}">
+                    <form method="POST" action="{{ route('admin.clients.store') }}" onsubmit="updateUrl()">
                         @csrf
                         <div>
                             <div class="border-b border-white/10 pb-12">
@@ -22,7 +22,12 @@
                                     <div class="sm:col-span-4">
                                         <label for="name" class="block text-sm font-medium leading-6 text-white">Name</label>
                                         <div class="mt-2">
-                                            <input required placeholder="Client Pvt. Ltd." id="name" name="name" type="text" autocomplete="name" class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                                            <input
+                                                required placeholder="Client Pvt. Ltd." id="name" name="name" type="text" autocomplete="name" class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                                                onchange="updateUrl()"
+                                                onfocus="updateUrl()"
+                                                onblur="updateUrl()"
+                                            >
                                         </div>
                                     </div>
                                     <div class="sm:col-span-4">
@@ -52,7 +57,14 @@
                                         <div class="mt-2">
                                             <div class="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
                                                 <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">{{ env('APP_URL') }}/</span>
-                                                <input type="text" name="url" id="url" autocomplete="url" class="flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6" placeholder="url-of-client">
+                                                <input
+                                                    type="text"
+                                                    name="url"
+                                                    id="url"
+                                                    autocomplete="url"
+                                                    class="flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
+                                                    onchange="updateUrl()"
+                                                    placeholder="url-of-client" />
                                             </div>
                                         </div>
                                     </div>
@@ -69,4 +81,11 @@
             </div>
         </div>
     </div>
+    <script>
+        function updateUrl() {
+            const url = document.getElementById('url');
+            const name = document.getElementById('name');
+            url.value = name.value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+        }
+    </script>
 </x-admin.layout>
