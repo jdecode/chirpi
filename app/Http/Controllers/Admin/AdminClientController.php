@@ -12,7 +12,7 @@ class AdminClientController extends Controller
 {
     public function store(StoreClientRequest $request): RedirectResponse
     {
-        Client::create($request->validated());
+        Client::create([...$request->validated(), 'password' => bcrypt($request->get('password'))]);
 
         return redirect()->route('admin.clients.index');
     }
