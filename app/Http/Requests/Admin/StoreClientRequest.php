@@ -13,6 +13,7 @@ class StoreClientRequest extends FormRequest
             'name' => ['required', 'string', 'max:255', 'min:3'],
             'email' => ['required', 'email', 'unique:clients'],
             'password' => ['required', 'confirmed', Password::min(5)],
+            'url' => ['required', 'string', 'unique:clients,url'],
         ];
     }
 }
