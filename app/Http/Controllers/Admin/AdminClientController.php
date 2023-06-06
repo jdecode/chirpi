@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\StoreClientRequest;
 use App\Models\Client;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 class AdminClientController extends Controller
 {
@@ -15,7 +14,7 @@ class AdminClientController extends Controller
     {
         Client::create($request->validated());
 
-        return redirect()->route('admin.clients.index')->setStatusCode(Response::HTTP_CREATED);
+        return redirect()->route('admin.clients.index');
     }
 
     public function index(): View
