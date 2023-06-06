@@ -13,6 +13,7 @@ class ClientSeeder extends Seeder
             'name' => 'Client',
             'email' => 'client@client.com',
             'password' => bcrypt('client'),
+            'url' => '1client',
         ];
         Client::upsert($client, ['email']);
     }
