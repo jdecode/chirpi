@@ -6,7 +6,7 @@
             </h2>
             <a
                 href="{{ route('admin.clients.create') }}"
-                class="-m-2 -p-3 rounded-full w-8 h-8 bg-indigo-500 place-content-center text-center text-2xl font-bold text-white">+</a>
+                class="p-2 px-4 -mb-4 rounded-lg bg-indigo-500 place-content-center text-center text-sm font-semibold text-white">Add Client</a>
         </div>
     </x-slot>
 
