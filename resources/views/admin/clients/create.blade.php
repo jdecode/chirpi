@@ -13,33 +13,56 @@
     <div class="mx-auto max-w-7xl">
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="mt-1 flow-root">
-                <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="overflow-x-auto">
                     <form method="POST" action="{{ route('admin.clients.store') }}">
                         @csrf
-                        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                            <div class="shadow overflow-hidden sm:rounded-md">
-                                <div class="px-4 py-5 bg-white dark:bg-gray-800 sm:p-6">
-                                    <div class="grid grid-cols-6 gap-6">
-                                        <div class="col-span-6 sm:col-span-3">
-                                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
-                                            <input type="text" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 dark:bg-gray-700 dark:text-gray-300 rounded-md">
+                        <div>
+                            <div class="border-b border-white/10 pb-12">
+                                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                                    <div class="sm:col-span-4">
+                                        <label for="name" class="block text-sm font-medium leading-6 text-white">Name</label>
+                                        <div class="mt-2">
+                                            <input required placeholder="Client Pvt. Ltd." id="name" name="name" type="text" autocomplete="name" class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
                                         </div>
-
-                                        <div class="col-span-6 sm:col-span-3">
-                                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
-                                            <input type="text" name="email" id="email" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 dark:bg-gray-700 dark:text-gray-300 rounded-md">
+                                    </div>
+                                    <div class="sm:col-span-4">
+                                        <label for="email" class="block text-sm font-medium leading-6 text-white">Email address</label>
+                                        <div class="mt-2">
+                                            <input required placeholder="director@client.com" id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
                                         </div>
-
-                                        <div class="col-span-6 sm:col-span-3">
-                                            <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Password</label>
-                                            <input type="password" name="password" id="password" autocomplete="password" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 dark:bg-gray-700 dark:text-gray-300 rounded-md">
+                                    </div>
+                                    <div class="sm:col-span-4">
+                                        <label for="password" class="block text-sm font-medium leading-6 text-white">Password</label>
+                                        <div class="mt-2">
+                                            <input required placeholder="top-secret-12345" id="password" name="password" type="password" class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
                                         </div>
-                                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring-gray-900 disabled:opacity-25 transition ease-in-out duration-150 mt-4">
-                                            {{ __('Add Client') }}
-                                        </button>
+                                    </div>
+                                    <div class="sm:col-span-4">
+                                        <label for="password_confirmation" class="block text-sm font-medium leading-6 text-white">Confirm password</label>
+                                        <div class="mt-2">
+                                            <input required placeholder="top-secret-12345" id="password" name="password_confirmation" type="password" class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="border-b border-white/10 pb-12">
+                                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                                    <div class="sm:col-span-4">
+                                        <label for="url" class="block text-sm font-medium leading-6 text-white">URL</label>
+                                        <div class="mt-2">
+                                            <div class="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                                                <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">{{ env('APP_URL') }}/</span>
+                                                <input type="text" name="url" id="url" autocomplete="url" class="flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6" placeholder="url-of-client">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex items-center justify-start gap-x-6">
+                            <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Save</button>
+                            <a href="{{ url(route('admin.clients.index')) }}" class="text-sm font-semibold leading-6 text-white">Cancel</a>
                         </div>
                     </form>
                 </div>

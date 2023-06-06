@@ -1,18 +1,12 @@
 <x-admin.layout>
-    <x-slot name="header">
-
-        <div class="sm:flex sm:items-center">
-            <div class="sm:flex-auto">
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __('Clients') }}
-                </h2>
-                <p class="mt-2 text-sm text-gray-300">A list of all the client organisations</p>
-            </div>
-            <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                <a
-                    href="{{ route('admin.clients.create') }}"
-                    class="block rounded-md bg-indigo-500 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Add Client</a>
-            </div>
+    <x-slot name="header" class="">
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('Clients') }}
+            </h2>
+            <a
+                href="{{ route('admin.clients.create') }}"
+                class="-m-2 -p-3 rounded-full w-8 h-8 bg-indigo-500 place-content-center text-center text-2xl font-bold text-white">+</a>
         </div>
     </x-slot>
 
@@ -25,6 +19,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Name</th>
+                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">URL</th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Email</th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-white">Created</th>
                                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
@@ -36,6 +31,7 @@
                             @foreach ($clients as $client)
                                 <tr>
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{ $client->name }}</td>
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{ $client->url }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{ $client->email }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{ Carbon\Carbon::parse($client->created_at)->format('F j, Y') }}</td>
                                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
