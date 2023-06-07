@@ -123,3 +123,13 @@ test('Logging out user with admin guard does not logout user with web guard', fu
     $admin = $this->get(route('admin.dashboard'));
     $admin->assertRedirect(route('admin'));
 })->group('admin', 'sessions');
+
+test('Throttle API access', function () {
+    $repeat = 60;
+    while ($repeat--) {
+        $response = $this->get(route('api.v1'));
+        $response->assertOk();
+    }
+    $response = $this->get(route('api.v1'));
+    $response->assertStatus(429);
+})->group('admin', 'throttle');
