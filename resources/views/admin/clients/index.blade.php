@@ -31,7 +31,17 @@
                             @foreach ($clients as $client)
                                 <tr>
                                     <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{ $client->name }}</td>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{{ $client->url }}</td>
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
+                                        <a
+                                            href="{{ env('APP_URL') . '/' . $client->url }}"
+                                            target="_blank"
+                                            title="Opens in a new tab"
+                                            class="underline underline-offset-4 decoration-gray-500 decoration-dotted"
+                                        >
+                                            <span class="text-gray-500">{{ env('APP_URL') }}/</span>
+                                            <span class="text-gray-300">{{ $client->url }}</span>
+                                        </a>
+                                    </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{ $client->email }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{ Carbon\Carbon::parse($client->created_at)->format('F j, Y') }}</td>
                                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0 hidden">
