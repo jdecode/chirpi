@@ -36,10 +36,13 @@
                                             href="{{ env('APP_URL') . '/' . $client->url }}"
                                             target="_blank"
                                             title="Opens in a new tab"
-                                            class="underline underline-offset-4 decoration-gray-500 decoration-dotted"
+                                            class="
+                                                underline underline-offset-4
+                                                decoration-gray-500 decoration-dashed
+                                                text-gray-500
+                                            "
                                         >
-                                            <span class="text-gray-500">{{ env('APP_URL') }}/</span>
-                                            <span class="text-gray-300">{{ $client->url }}</span>
+                                            {{ env('APP_URL') }}/<span class="text-gray-300">{{ $client->url }}</span>
                                         </a>
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{{ $client->email }}</td>
