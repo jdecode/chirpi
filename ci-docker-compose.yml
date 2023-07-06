@@ -7,8 +7,6 @@ services:
     container_name: ci-chirpi
     depends_on:
       - ci-chirpi-pg
-    volumes:
-      - .:/var/www/html
     restart: "no"
     ports:
       - "2462:80"
