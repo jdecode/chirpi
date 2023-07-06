@@ -23,4 +23,4 @@ jobs:
         run: docker-compose -f ci-docker-compose.yml up -d
 
       - name: CI
-        run: docker-compose -f ci-docker-compose.yml exec -T chirpi composer run ci
+        run: docker-compose -f ci-docker-compose.yml exec -T ci-chirpi composer run ci
