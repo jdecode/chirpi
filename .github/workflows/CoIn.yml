@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Docker Compose
-        run: docker-compose up -d
+        run: docker-compose -f ci-docker-compose.yml up -d
 
       - name: CI
-        run: docker-compose exec -T chirpi composer run ci
+        run: docker-compose -f ci-docker-compose.yml exec -T chirpi composer run ci

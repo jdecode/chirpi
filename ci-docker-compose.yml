@@ -1,0 +1,48 @@
+version : "3"
+services:
+  ci-chirpi:
+    build:
+      context: .
+      dockerfile: dockerfiles/CiWeb.Dockerfile
+    container_name: ci-chirpi
+    depends_on:
+      - ci-chirpi-pg
+    volumes:
+      - .:/var/www/html
+    restart: "no"
+    ports:
+      - "2363:80"
+    environment:
+      APP_NAME: "Chirpi"
+      DB_CONNECTION: 'pgsql'
+      DATABASE_URL: 'pgsql://postgres:password@23.63.1.2:5432/testing'
+    networks:
+      ci-chirpi-network:
+        ipv4_address: 23.63.1.1
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+  ci-chirpi-pg:
+    image: postgres:15
+    container_name: ci-chirpi-pg
+    volumes:
+      - ci-chirpi-pg-disk:/var/lib/postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: testing
+    networks:
+      ci-chirpi-network:
+        ipv4_address: 23.63.1.2
+
+# On-disk storage of DB data, when containers are stopped
+volumes:
+  ci-chirpi-pg-disk: {}
+
+# Local network for services running using this docker-compose config
+networks:
+  ci-chirpi-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 23.63.0.0/16

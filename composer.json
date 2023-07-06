@@ -91,9 +91,7 @@
             "echo \"\nSeed, if in need: \\e[32mphp artisan db:seed\\e[0m\"\n"
         ],
         "ci": [
-            "composer install --prefer-source",
-            "npm install",
-            "@dev",
+            "chmod -R 777 storage bootstrap",
             "@pester"
         ]
     },
