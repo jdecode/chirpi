@@ -4,7 +4,7 @@
 
 ### Run locally
 ```
-docker-compose up -d
+docker compose up -d
 ```
 _This will take a little while to download the images and build the containers_
 ```
